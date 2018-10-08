@@ -19,4 +19,25 @@ class EulerProblems
     return total
   end
 
+  # ====================================
+
+
+
+  def problem2
+    i = 1
+    j = 2
+    k = 0
+
+    total = 0
+
+    while i < 4000000 && j < 4000000
+      total += j % 2== 0 ? j : 0
+      k = j
+      j += i
+      i = k
+    end
+
+    return total
+  end
+
 end
