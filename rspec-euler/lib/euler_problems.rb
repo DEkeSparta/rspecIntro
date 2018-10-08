@@ -1,5 +1,5 @@
 class EulerProblems
-  def self.is_multiple_of_3_5? i
+  def  is_multiple_of_3_5? i
     if i % 3 == 0 || i % 5 == 0
       return true
     else
@@ -12,7 +12,7 @@ class EulerProblems
     i = 1
 
     while i < 1000
-      total += self.class.is_multiple_of_3_5?(i) ? i : 0
+      total +=   is_multiple_of_3_5?(i) ? i : 0
       i+=1
     end
 
@@ -20,8 +20,6 @@ class EulerProblems
   end
 
   # ====================================
-
-
 
   def problem2
     i = 1
@@ -38,6 +36,47 @@ class EulerProblems
     end
 
     return total
+  end
+
+  # ==================================
+
+  def is_factor? number, factor
+    return number % factor == 0 ? true : false
+  end
+
+  def is_prime? number
+    root_num = number**0.5 + 1
+    i = 2
+
+    while i <= root_num
+      if is_factor? number, i
+        return false
+      end
+      i+=1
+    end
+    return true
+  end
+
+  def problem3
+    number = 600851475143
+    root_num = number**0.5
+    small_ans = 0
+    i=1
+
+    while i<root_num
+      if is_factor? number, i
+        larger_factor = (number / i).to_i
+        print "small:#{i} , large: #{larger_factor} \n"
+        if is_prime? larger_factor
+          return larger_factor
+        elsif is_prime? i
+          small_ans = i
+        end
+      end
+      i+=1
+    end
+
+    return small_ans
   end
 
 end
